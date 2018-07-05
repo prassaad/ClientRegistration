@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "MVCExamples";
+}
+
+<h2>MVC Examples</h2>
+
+<div class="row">
+    <div class="col-sm-4">
+        <h4>Row One</h4>
+        <form method="post" action="" id="register">
+            <div class="col-sm-8">
+                <input type="text" name="Name" class="form-control" placeholder="please enter your text here" />
+            </div>
+            <div class="col-sm-4">
+                <input type="submit" value="Submit" class="form-control btn-primary" />
+            </div>
+        </form>
+    </div>
+    <div class="col-sm-4">
+        <h4>Row Two</h4>
+        @{
+            if (IsPost)
+            {
+                <label class="form-control alert-info ">Thanks @ViewBag.Msg. We will get back soon!</label>
+            }
+        }
+    </div>
+    <div class="col-sm-4">
+        <h4>Row Three</h4>
+  </div>
+</div>
+
+<style>
+    #nametext {border-color: cornflowerblue;}
+    #nametext::-moz-placeholder {color: cornflowerblue;}
+   .req::-moz-placeholder{color:red; border-color: red}
+</style>
+ @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#register").submit(function (e) {
+            if($("#nametext").val() == "") {
+                $("#nametext").css({ "border-color": "red" });
+                alert("Please complete all required fields outlined in Red");
+            }
+        });
+    });
+</script>*@
