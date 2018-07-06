@@ -13,7 +13,7 @@ namespace Demoproject.Controllers
 {
     public class RegistrationController : Controller
     {
-        private string path = @"E:\Project\Demoproject\Demoproject\App_Data\output.json";
+        private string path = System.Web.HttpContext.Current.Server.MapPath("~/App_Data/output.json"); //@"E:\Project\Demoproject\Demoproject\App_Data\output.json";
         string jsondata = string.Empty;
         //string path = Server.MapPath("~/App_Data/output.json");
 
@@ -121,8 +121,12 @@ namespace Demoproject.Controllers
             using (StreamReader read = new StreamReader(path))
             {
                 jsondata = read.ReadToEnd();
-                //dynamic array = JsonConvert.DeserializeObject(jsondata);
+                //Deserialize appsetting Objects
+                var appSettingsRoot = JsonConvert.DeserializeObject<AppSettings>(jsondata);
+                List<Tenant> tenants = appSettingsRoot.Multitenancy.Tenants;
+                //Serialize tenants JSON Objects
 
+                jsondata = JsonConvert.SerializeObject(tenants,Formatting.Indented);
             }
             return Json(jsondata, JsonRequestBehavior.AllowGet);
         }
