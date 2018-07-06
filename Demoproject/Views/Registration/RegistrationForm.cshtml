@@ -1,11 +1,16 @@
 ﻿
-@model Demoproject.Models.ClientVm
+@*@model Demoproject.Models.ClientVm*@
+@model Demoproject.Models.Tenant
+
 
 @{
     ViewBag.Title = "Registration Form";
 }
 
 <br /><br />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 <h1>Registration Form</h1>
 @using (Html.BeginForm("RegistrationForm", "Registration"))
 {
@@ -66,30 +71,31 @@
 
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" id="btnSubmint" value="Submit" class="btn btn-primary">
+                        @*<input type="submit" id="btnSubmint" value="Submit" class="btn btn-primary">*@
+                        <input type="submit" id="btnSubmint" value="@ViewBag.ButtonName" class="btn btn-primary">
                         <a class="btn btn-danger" href="@Url.Action("Index", "Registration")">Cancel</a>
                     </div>
                 </div>
 
             </fieldset>
-            @{ if (IsPost)
+            @{
+                if (!string.IsNullOrEmpty(ViewBag.duplicateMsg))
                 {
-                    // <h4 class="alert alert-danger">@ViewBag.duplicateMsg</h4>
                     <script>
-
-                        $("#btnSubmint").click(function () {
-                            alert(@ViewBag.duplicateMsg);
-
-                        });
-
+                    swal({
+                        title: '@ViewBag.duplicateMsg',
+                        text: "",
+                        icon: "error",
+                        dangerMode: true,
+                        closeOnClickOutside: false,
+                    });
                     </script>
-                }
+                };
             }
         </div>
     </div>
 
 }
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 
 
