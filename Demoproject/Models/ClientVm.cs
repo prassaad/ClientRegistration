@@ -33,4 +33,53 @@ namespace Demoproject.Models
         public string CreatedOn { get; set; }
 
     }
+    public class DefaultConnection
+    {
+        public string ConnectionString { get; set; }
+    }
+
+    public class Data
+    {
+        public DefaultConnection DefaultConnection { get; set; }
+    }
+
+    public class LogLevel
+    {
+        public string Default { get; set; }
+        public string key { get; set; }
+    }
+
+    public class Logging
+    {
+        public bool IncludeScopes { get; set; }
+        public LogLevel LogLevel { get; set; }
+    }
+
+    public class Tenant
+    {
+        public object Id { get; set; }
+        public string SubscriptionName { get; set; }
+        public string Address { get; set; }
+        public string Email { get; set; }
+        public string Mobile { get; set; }
+        public string ContactPerson { get; set; }
+        public string CreatedOn { get; set; }
+        public List<string> Services { get; set; }
+        public string Name { get; set; }
+        public List<string> Hostnames { get; set; }
+        public string Theme { get; set; }
+        public string ConnectionString { get; set; }
+    }
+
+    public class Multitenancy
+    {
+        public List<Tenant> Tenants { get; set; }
+    }
+
+    public class AppSettings
+    {
+        public Data Data { get; set; }
+        public Logging Logging { get; set; }
+        public Multitenancy Multitenancy { get; set; }
+    }
 }
