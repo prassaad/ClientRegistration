@@ -274,7 +274,6 @@
     <Content Include="Views\Home\MVCExamples.cshtml" />
     <Content Include="Views\Registration\Index.cshtml" />
     <Content Include="Views\Registration\RegistrationForm.cshtml" />
-    <Content Include="Views\Registration\output.json" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

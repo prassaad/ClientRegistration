@@ -20,7 +20,7 @@
         "Email": "ganesh@gmail.com",
         "Mobile": "9030257173",
         "ContactPerson": "Narendra",
-        "CreatedOn": "7/4/2018 9:47:21 AM",
+        "CreatedOn": "7/4/2018",
         "Services": [
           "Admin",
           "Accounts"
@@ -39,9 +39,9 @@
         "Email": "ganesh@gmail.com",
         "Mobile": "903025711",
         "ContactPerson": "Narendra",
-        "CreatedOn": "7/4/2018 9:47:21 AM",
+        "CreatedOn": "7/4/2018",
         "Services": [
-          "Admin" 
+          "Admin"
         ],
         "Name": "Tenant 2",
         "Hostnames": [
@@ -49,11 +49,26 @@
         ],
         "Theme": "Darkly",
         "ConnectionString": ""
+      },
+      {
+        "Id": 180706120927,
+        "SubscriptionName": "Dilp",
+        "Address": "KPHB",
+        "Email": "sivaji@gmail.com",
+        "Mobile": "9030257173",
+        "ContactPerson": "Narendra",
+        "CreatedOn": "7/6/2018",
+        "Services": [
+          "Admint",
+          "Client"
+        ],
+        "Name": "Dilp",
+        "Hostnames": [
+          "Localhost:00001"
+        ],
+        "Theme": "blue",
+        "ConnectionString": "Godaddy"
       }
     ]
   }
 }
-
-
-
- 

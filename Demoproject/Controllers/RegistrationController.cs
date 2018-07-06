@@ -28,10 +28,12 @@ namespace Demoproject.Controllers
 
             if (clientId == null || clientId == 0)
             {
+                ViewBag.ButtonName = "Submit";
 
             }
             else
             {
+                ViewBag.ButtonName = "Update";
                 var clientVm = new ClientVm();
                 using (StreamReader read = new StreamReader(path))
                 {
@@ -59,57 +61,79 @@ namespace Demoproject.Controllers
         }
 
         [HttpPost]
-        public ActionResult RegistrationForm(ClientVm clientVm)
+        public ActionResult RegistrationForm(Tenant tenant)
         {
-
+            ViewBag.ButtonName = "Submit";
             if (ModelState.IsValid)
             {
-                if (clientVm.Id > 0) {
-                    
-                    using(StreamReader read = new StreamReader(path)){
-                        jsondata = read.ReadToEnd();
-                        var list = JsonConvert.DeserializeObject<List<ClientVm>>(jsondata);
-                        jsondata = JsonConvert.SerializeObject(list.Where(i => i.Id == clientVm.Id), Formatting.Indented);
-                        dynamic jsonObj = JsonConvert.DeserializeObject(jsondata);
-                        foreach (var x in jsonObj)
-                        {
-                            jsonObj[0]["Address"] = clientVm.Address;
-                            jsonObj[0]["Email"] = clientVm.Email;
-                            jsonObj[0]["Mobile"] = clientVm.Mobile;
-                            jsonObj[0]["ContactPerson"] = clientVm.ContactPerson;
-                        }
+                if (tenant.Id > 0)
+                {
 
-                        jsondata = JsonConvert.SerializeObject(jsonObj, Formatting.Indented);
+                    //using (StreamReader read = new StreamReader(path))
+                    //{
+                    //    jsondata = read.ReadToEnd();
+                    //    var list = JsonConvert.DeserializeObject<List<ClientVm>>(jsondata);
+                    //    jsondata = JsonConvert.SerializeObject(list.Where(i => i.Id == clientVm.Id), Formatting.Indented);
+                    //    dynamic jsonObj = JsonConvert.DeserializeObject(jsondata);
+                    //    foreach (var x in jsonObj)
+                    //    {
+                    //        jsonObj[0]["Address"] = clientVm.Address;
+                    //        jsonObj[0]["Email"] = clientVm.Email;
+                    //        jsonObj[0]["Mobile"] = clientVm.Mobile;
+                    //        jsonObj[0]["ContactPerson"] = clientVm.ContactPerson;
+                    //    }
 
-                    }
-                    System.IO.File.WriteAllText(path, jsondata);
-                    return View("~/Views/Registration/Index.cshtml", clientVm);
+                    //    jsondata = JsonConvert.SerializeObject(jsonObj, Formatting.Indented);
+
+                    //}
+                    //System.IO.File.WriteAllText(path, jsondata);
+                    //return View("~/Views/Registration/Index.cshtml", clientVm);
                 }
                 else
-                {
-                    clientVm.Id = Convert.ToInt64(DateTime.UtcNow.ToString("yyMMddhhmmss"));
-                    clientVm.CreatedOn = DateTime.Now.ToString();
+                    {
+                    tenant.Id = Convert.ToInt64(DateTime.UtcNow.ToString("yyMMddhhmmss"));
+                    tenant.CreatedOn = DateTime.Now.ToShortDateString();
+                    tenant.Services = new List<string> { "Admint", "Client" };
+                    tenant.Hostnames = new List<string> { "Localhost:00001" };
+                    tenant.Name = tenant.SubscriptionName;
+                    tenant.Theme = "blue";
+                    tenant.ConnectionString = "Godaddy";
                     using (StreamReader read = new StreamReader(path))
                     {
                         jsondata = read.ReadToEnd();
-                        var list = JsonConvert.DeserializeObject<List<ClientVm>>(jsondata);
-                        list.Add(clientVm);
-                        if (list.Select(x => x.SubscriptionName).Distinct().Count() != list.Count)
+
+                        var appSettingsRoot = JsonConvert.DeserializeObject<AppSettings>(jsondata);
+                        List<Tenant> tenants = appSettingsRoot.Multitenancy.Tenants;
+                        appSettingsRoot.Multitenancy.Tenants.Add(tenant);
+
+                        if (tenants.Select(x => x.SubscriptionName).Distinct().Count() != tenants.Count)
                         {
-                            //ViewBag.duplicateMsg = "ERROR: Sorry this Subscription Name is already taken. please try something different";
-                            return Json(new { success = true, message = " ERROR: Sorry this Subscription Name is already taken. please try something different" }, JsonRequestBehavior.AllowGet);
-                            //return View();
+
+                            ViewBag.duplicateMsg = " Sorry ! this Subscription Name is already taken. please try something different ";
+                            return View();
                         }
                         else
                         {
-                            jsondata = JsonConvert.SerializeObject(list, Formatting.Indented);
+                            jsondata = JsonConvert.SerializeObject(appSettingsRoot, Formatting.Indented);
                             ViewBag.SuccessMsg = " Registration successful...! Please check your email.";
                         }
+                        #region
+                        //var list = JsonConvert.DeserializeObject<List<ClientVm>>(jsondata);
+                        //list.Add(clientVm);
+                        //if (list.Select(x => x.SubscriptionName).Distinct().Count() != list.Count)
+                        //{
+                        //    ViewBag.ButtonName = "Update";
+                        //    ViewBag.duplicateMsg = "Sorry ! Update function is not working currently ";
+                        //}
+                        //else
+                        //{
+                        //    jsondata = JsonConvert.SerializeObject(list, Formatting.Indented);
+                        //    ViewBag.SuccessMsg = " Registration successful...! Please check your email.";
+                        //}
+                        #endregion
                     }
                     System.IO.File.WriteAllText(path, jsondata);
-                    return View("~/Views/Registration/Index.cshtml",clientVm);
-                    //return RedirectToAction("Index", "Registration");
-
+                    return View("~/Views/Registration/Index.cshtml", tenant);
                 }
             }
             return View();
