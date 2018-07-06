@@ -87,7 +87,7 @@ namespace Demoproject.Controllers
                 }
                 else
                 {
-                    clientVm.Id = Convert.ToInt64(DateTime.UtcNow.ToString("yyyyMMddhhmmss"));
+                    clientVm.Id = Convert.ToInt64(DateTime.UtcNow.ToString("yyMMddhhmmss"));
                     clientVm.CreatedOn = DateTime.Now.ToString();
                     using (StreamReader read = new StreamReader(path))
                     {

@@ -14,7 +14,7 @@
   "Multitenancy": {
     "Tenants": [
       {
-        "Id": 20180704041721,
+        "Id": 180704041721,
         "SubscriptionName": "Ganesh",
         "Address": "Palakollu",
         "Email": "ganesh@gmail.com",
@@ -33,7 +33,7 @@
         "ConnectionString": ""
       },
       {
-        "Id": 20180704041721,
+        "Id": 180704041721,
         "SubscriptionName": "Ganesh1",
         "Address": "Bhimavaram",
         "Email": "ganesh@gmail.com",
