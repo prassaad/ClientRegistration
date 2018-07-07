@@ -1,5 +1,6 @@
 ﻿@*@model Demoproject.Models.ClientVm*@
 @model Demoproject.Models.Tenant
+
 @{
     ViewBag.Title = "Registration Form";
 }
@@ -39,18 +40,18 @@
                             </div>
                         </div>
                         <br /><br />
-                              <div class="form-group">
-                                  @*@Html.LabelFor(model => model.Hostnames, new { @class = "col-md-2 control-label" })*@
-                                  <label class="col-md-2 control-label">Subscription </label>
-                                  <div class="col-md-2">
-                                      @*@Html.TextBoxFor(model => model.Hostnames[0], new { @class = "form-control", @placeholder = "Subscription Name" })*@
-                                      <input type="text" class="form-control" name="hostname" required />
-                                      @*@Html.ValidationMessageFor(model => model.Hostnames[0], "", new { @style = "color:red" })*@
-                                  </div>
-                                  <div class="col-md-2">
-                                      .mesure.io
-                                  </div>
-                              </div>
+                        <div class="form-group">
+                            @*@Html.LabelFor(model => model.Hostnames, new { @class = "col-md-2 control-label" })*@
+                            <label class="col-md-2 control-label">Subscription </label>
+                            <div class="col-md-2">
+                                @*@Html.TextBoxFor(model => model.Hostnames[0], new { @class = "form-control", @placeholder = "Subscription Name" })*@
+                                <input type="text" class="form-control" name="hostname" required />
+                                @*@Html.ValidationMessageFor(model => model.Hostnames[0], "", new { @style = "color:red" })*@
+                            </div>
+                            <div class="col-md-2">
+                                .mesure.io
+                            </div>
+                        </div>
 
                         <br /><br />
                         <div class="form-group">

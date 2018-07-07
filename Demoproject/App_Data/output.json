@@ -15,16 +15,16 @@
     "Tenants": [
       {
         "Id": 180706063342,
-        "Address": "Hydetabad",
-        "Email": "prasaddamgeti@gmail.com",
-        "Mobile": "8978899993",
-        "ContactPerson": "Vijay",
+        "Address": "S R Nagar",
+        "Email": "ganesh@gmail.com",
+        "Mobile": "9059688504",
+        "ContactPerson": "Narendra",
         "CreatedOn": "7/6/2018",
         "Services": [
           "Admint",
           "Client"
         ],
-        "Name": "Account 1",
+        "Name": "KYC",
         "Hostnames": [
           "account1.mesure.io"
         ],

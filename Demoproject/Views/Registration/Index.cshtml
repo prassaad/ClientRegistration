@@ -70,7 +70,6 @@
                     }
                 });
                 function OnSuccess(result) {
-                    //x = document.getElementById("data").innerHTML = result;
                     var row = $("#tbl tr:last-child").removeAttr("style").clone(true);
                     $("#tbl tr").not($("#tbl tr:first-child")).remove();
                     var pop = $.parseJSON(result)
@@ -105,6 +104,8 @@
                     icon: "warning",
                     buttons: ["Cancel","Yes, delete it!"],
                     dangerMode: true,
+                    closeOnClickOutside: false,
+
                 })
                     .then((willDelete) => {
                         if (willDelete) {
@@ -116,14 +117,20 @@
                                 success: function (result) {
                                     swal(result.message, {
                                         icon: "success",
+                                        closeOnClickOutside: false,
                                     });
+
                                     loaddata();
                                 },
                                 failure: function (result) {
-                                    alert(result)
+                                    swal(result.message, {
+                                        icon: "error",
+                                    });
                                 },
                                 error: function (result) {
-                                    alert(result)
+                                    swal(result.message, {
+                                        icon: "error",
+                                    });
                                 }
                             });
                         } else {
