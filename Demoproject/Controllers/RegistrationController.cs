@@ -36,19 +36,35 @@ namespace Demoproject.Controllers
                 {
                     jsondata = read.ReadToEnd();
                     var appSettingsRoot = JsonConvert.DeserializeObject<AppSettings>(jsondata);
-                    List<Tenant> tenants = appSettingsRoot.Multitenancy.Tenants;
-                    jsondata = JsonConvert.SerializeObject(tenants.Where(x => x.Id == clientId), Formatting.Indented);
-                    dynamic jsonObj = JsonConvert.DeserializeObject(jsondata);
-                    tenant = new Tenant()
+                    foreach (var client in appSettingsRoot.Multitenancy.Tenants.Where(x => x.Id == clientId))
                     {
-                        Id = jsonObj[0].Id,
-                        Name = jsonObj[0].Name,
-                        Email = jsonObj[0].Email,
-                        Mobile = jsonObj[0].Mobile,
-                        Address = jsonObj[0].Address,
-                        ContactPerson = jsonObj[0].ContactPerson,
-                        CreatedOn = jsonObj[0].CreatedOn
-                    };
+                        tenant = new Tenant
+                        {
+                            Id = client.Id,
+                            Name = client.Name,
+                            Address = client.Address,
+                            Email = client.Email,
+                            Mobile = client.Mobile,
+                            ContactPerson = client.ContactPerson
+                        };
+                    }
+                    #region old Edit Code
+                    //var appSettingsRoot = JsonConvert.DeserializeObject<AppSettings>(jsondata);
+                    //List<Tenant> tenants = appSettingsRoot.Multitenancy.Tenants;
+                    //jsondata = JsonConvert.SerializeObject(tenants.Where(x => x.Id == clientId), Formatting.Indented);
+                    //dynamic jsonObj = JsonConvert.DeserializeObject(jsondata);
+                    //tenant = new Tenant()
+                    //{
+                    //    Id = jsonObj[0].Id,
+                    //    Name = jsonObj[0].Name,
+                    //    Email = jsonObj[0].Email,
+                    //    Mobile = jsonObj[0].Mobile,
+                    //    Address = jsonObj[0].Address,
+                    //    ContactPerson = jsonObj[0].ContactPerson,
+                    //    CreatedOn = jsonObj[0].CreatedOn
+                    //};
+                    #endregion
+
                     return View("RegistrationForm", tenant);
                 }
             }
@@ -68,18 +84,32 @@ namespace Demoproject.Controllers
                     using (StreamReader read = new StreamReader(path))
                     {
                         jsondata = read.ReadToEnd();
-                        var jObject = JObject.Parse(jsondata);
-                        JArray tenantsArray = (JArray)jObject["Multitenancy"]["Tenants"];
-                        foreach (var client in tenantsArray.Where(obj => obj["Id"].Value<long>() == tenant.Id))
+                        var appSettingsRoot = JsonConvert.DeserializeObject<AppSettings>(jsondata);
+                        foreach (var client in appSettingsRoot.Multitenancy.Tenants.Where(x => x.Id == tenant.Id))
                         {
-                            client["Name"] = tenant.Name;
-                            client["Address"] = tenant.Address;
-                            client["Email"] = tenant.Email;
-                            client["Mobile"] = tenant.Mobile;
-                            client["ContactPerson"] = tenant.ContactPerson;
+                            client.Name = tenant.Name;
+                            client.Address = tenant.Address;
+                            client.Email = tenant.Email;
+                            client.Mobile = tenant.Mobile;
+                            client.ContactPerson = tenant.ContactPerson;
                         }
-                        jObject["Multitenancy"]["Tenants"] = tenantsArray;
-                        jsondata = JsonConvert.SerializeObject(jObject, Formatting.Indented);
+                        jsondata = JsonConvert.SerializeObject(appSettingsRoot, Formatting.Indented);
+
+                        #region old update code
+                        //var jObject = JObject.Parse(jsondata);
+                        //JArray tenantsArray = (JArray)jObject["Multitenancy"]["Tenants"];
+                        //foreach (var client in tenantsArray.Where(obj => obj["Id"].Value<long>() == tenant.Id))
+                        //{
+                        //    client["Name"] = tenant.Name;
+                        //    client["Address"] = tenant.Address;
+                        //    client["Email"] = tenant.Email;
+                        //    client["Mobile"] = tenant.Mobile;
+                        //    client["ContactPerson"] = tenant.ContactPerson;
+                        //}
+                        //jObject["Multitenancy"]["Tenants"] = tenantsArray;
+                        //jsondata = JsonConvert.SerializeObject(jObject, Formatting.Indented);
+                        #endregion
+
                         ViewBag.SuccessMsg = " Update successful...!";
                     }
                     System.IO.File.WriteAllText(path, jsondata);
@@ -139,11 +169,18 @@ namespace Demoproject.Controllers
                 using (StreamReader read = new StreamReader(path))
                 {
                     jsondata = read.ReadToEnd();
-                    var jObject = JObject.Parse(jsondata);
-                    JArray tenantsArray = (JArray)jObject["Multitenancy"]["Tenants"];
-                    var companyToDeleted = tenantsArray.FirstOrDefault(obj => obj["Id"].Value<long>() == clientId);
-                    tenantsArray.Remove(companyToDeleted);
-                    jsondata = JsonConvert.SerializeObject(jObject, Formatting.Indented);
+                    var appSettingsRoot = JsonConvert.DeserializeObject<AppSettings>(jsondata);
+                    var clientToDelete = appSettingsRoot.Multitenancy.Tenants.FirstOrDefault(x => x.Id == clientId);
+                    appSettingsRoot.Multitenancy.Tenants.Remove(clientToDelete);
+                    jsondata = JsonConvert.SerializeObject(appSettingsRoot, Formatting.Indented);
+
+                    #region old delete colde
+                    //var jObject = JObject.Parse(jsondata);
+                    //JArray tenantsArray = (JArray)jObject["Multitenancy"]["Tenants"];
+                    //var clientToDelete = tenantsArray.FirstOrDefault(obj => obj["Id"].Value<long>() == clientId);
+                    //tenantsArray.Remove(clientToDelete);
+                    //jsondata = JsonConvert.SerializeObject(jObject, Formatting.Indented);
+                    #endregion
                 }
                 System.IO.File.WriteAllText(path, jsondata);
                 return Json(new { success = true, message = "Your file has been deleted successfully" }, JsonRequestBehavior.AllowGet);

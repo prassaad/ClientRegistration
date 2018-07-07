@@ -15,36 +15,18 @@
     "Tenants": [
       {
         "Id": 180706063342,
-        "Address": "S R Nagar",
-        "Email": "ganesh@gmail.com",
-        "Mobile": "9059688504",
-        "ContactPerson": "Narendra",
+        "Address": "Borabanda",
+        "Email": "uma@gmail.com",
+        "Mobile": "9876543210",
+        "ContactPerson": "Sivaji",
         "CreatedOn": "7/6/2018",
         "Services": [
           "Admint",
           "Client"
         ],
-        "Name": "KYC",
+        "Name": "Uma",
         "Hostnames": [
           "account1.mesure.io"
-        ],
-        "Theme": "Cerulean",
-        "ConnectionString": "Godaddy"
-      },
-      {
-        "Id": 180706063435,
-        "Address": "Hyderabad",
-        "Email": "prasaddamgeti1@gmail.com",
-        "Mobile": "8978899993",
-        "ContactPerson": "Vijay",
-        "CreatedOn": "7/6/2018",
-        "Services": [
-          "Admint",
-          "Client"
-        ],
-        "Name": "Oxford University",
-        "Hostnames": [
-          "oxfd.mesure.io"
         ],
         "Theme": "Cerulean",
         "ConnectionString": "Godaddy"
