@@ -14,59 +14,39 @@
   "Multitenancy": {
     "Tenants": [
       {
-        "Id": 180704041721,
-        "SubscriptionName": "Ganesh",
-        "Address": "Palakollu",
-        "Email": "ganesh@gmail.com",
-        "Mobile": "9030257173",
-        "ContactPerson": "Narendra",
-        "CreatedOn": "7/4/2018",
-        "Services": [
-          "Admin",
-          "Accounts"
-        ],
-        "Name": "HBR",
-        "Hostnames": [
-          "localhost:5106"
-        ],
-        "Theme": "Cerulean",
-        "ConnectionString": ""
-      },
-      {
-        "Id": 180704041721,
-        "SubscriptionName": "Ganesh1",
-        "Address": "Bhimavaram",
-        "Email": "ganesh@gmail.com",
-        "Mobile": "903025711",
-        "ContactPerson": "Narendra",
-        "CreatedOn": "7/4/2018",
-        "Services": [
-          "Admin"
-        ],
-        "Name": "Tenant 2",
-        "Hostnames": [
-          "localhost:60000"
-        ],
-        "Theme": "Darkly",
-        "ConnectionString": ""
-      },
-      {
-        "Id": 180706120927,
-        "SubscriptionName": "Dilp",
-        "Address": "KPHB",
-        "Email": "sivaji@gmail.com",
-        "Mobile": "9030257173",
-        "ContactPerson": "Narendra",
+        "Id": 180706063342,
+        "Address": "Hydetabad",
+        "Email": "prasaddamgeti@gmail.com",
+        "Mobile": "8978899993",
+        "ContactPerson": "Vijay",
         "CreatedOn": "7/6/2018",
         "Services": [
           "Admint",
           "Client"
         ],
-        "Name": "Dilp",
+        "Name": "Account 1",
         "Hostnames": [
-          "Localhost:00001"
+          "account1.mesure.io"
         ],
-        "Theme": "blue",
+        "Theme": "Cerulean",
+        "ConnectionString": "Godaddy"
+      },
+      {
+        "Id": 180706063435,
+        "Address": "Hyderabad",
+        "Email": "prasaddamgeti1@gmail.com",
+        "Mobile": "8978899993",
+        "ContactPerson": "Vijay",
+        "CreatedOn": "7/6/2018",
+        "Services": [
+          "Admint",
+          "Client"
+        ],
+        "Name": "Oxford University",
+        "Hostnames": [
+          "oxfd.mesure.io"
+        ],
+        "Theme": "Cerulean",
         "ConnectionString": "Godaddy"
       }
     ]

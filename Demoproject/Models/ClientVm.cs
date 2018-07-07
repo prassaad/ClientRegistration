@@ -61,9 +61,6 @@ namespace Demoproject.Models
 
 
         public Nullable<long> Id { get; set; }
-        [Required(ErrorMessage = "Please Enter Subscription Name")]
-        [Display(Name = "Subscription Name")]
-        public string SubscriptionName { get; set; }
         [Required(ErrorMessage = "Please Enter Address")]
         public string Address { get; set; }
         [Required(ErrorMessage = "Please Enter Email Address")]
@@ -78,7 +75,10 @@ namespace Demoproject.Models
         public string ContactPerson { get; set; }
         public string CreatedOn { get; set; }
         public List<string> Services { get; set; }
+        [Display(Name = "Org.Name")]
+        [Required(ErrorMessage = "Please Enter Org.Name")]
         public string Name { get; set; }
+        [Display(Name = "Subscription(s)")]
         public List<string> Hostnames { get; set; }
         public string Theme { get; set; }
         public string ConnectionString { get; set; }
