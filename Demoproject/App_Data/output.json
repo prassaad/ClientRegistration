@@ -14,19 +14,73 @@
   "Multitenancy": {
     "Tenants": [
       {
-        "Id": 180706063342,
-        "Address": "Borabanda",
-        "Email": "uma@gmail.com",
-        "Mobile": "9876543210",
-        "ContactPerson": "Sivaji",
-        "CreatedOn": "7/6/2018",
+        "Id": 180707024610,
+        "Address": "Bulkampate, Hyderabad",
+        "Email": "prasaddamgeti@gmail.com",
+        "Mobile": "8978899993",
+        "ContactPerson": "vijaya",
+        "CreatedOn": "7/7/2018",
         "Services": [
           "Admint",
           "Client"
         ],
-        "Name": "Uma",
+        "Name": "Oxford University",
         "Hostnames": [
-          "account1.mesure.io"
+          "oxfd.mesure.io"
+        ],
+        "Theme": "Cerulean",
+        "ConnectionString": "Godaddy"
+      },
+      {
+        "Id": 180707024927,
+        "Address": "S R Nagar",
+        "Email": "sivaji.budida@gmail.com",
+        "Mobile": "9030257173",
+        "ContactPerson": "Narendra",
+        "CreatedOn": "7/7/2018",
+        "Services": [
+          "Admint",
+          "Client"
+        ],
+        "Name": "KYC",
+        "Hostnames": [
+          "kyc.mesure.io"
+        ],
+        "Theme": "Cerulean",
+        "ConnectionString": "Godaddy"
+      },
+      {
+        "Id": 180707034858,
+        "Address": "S R Nagar, Hyderabad",
+        "Email": "raju@gmail.com",
+        "Mobile": "8978899993",
+        "ContactPerson": "uma",
+        "CreatedOn": "7/7/2018",
+        "Services": [
+          "Admint",
+          "Client"
+        ],
+        "Name": "Coetl",
+        "Hostnames": [
+          "coetl.mesure.io"
+        ],
+        "Theme": "Cerulean",
+        "ConnectionString": "Godaddy"
+      },
+      {
+        "Id": 180707062145,
+        "Address": "Hyderabad",
+        "Email": "govind@gmail.com",
+        "Mobile": "9876543210",
+        "ContactPerson": "Sandeep",
+        "CreatedOn": "7/7/2018",
+        "Services": [
+          "Admint",
+          "Client"
+        ],
+        "Name": "infosys",
+        "Hostnames": [
+          "info.mesure.io"
         ],
         "Theme": "Cerulean",
         "ConnectionString": "Godaddy"
