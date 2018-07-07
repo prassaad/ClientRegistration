@@ -1,8 +1,5 @@
-﻿
-@*@model Demoproject.Models.ClientVm*@
+﻿@*@model Demoproject.Models.ClientVm*@
 @model Demoproject.Models.Tenant
-
-
 @{
     ViewBag.Title = "Registration Form";
 }
@@ -11,7 +8,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-<h1>Registration Form</h1>
 @using (Html.BeginForm("RegistrationForm", "Registration"))
 {
 
@@ -21,67 +17,89 @@
     @Html.HiddenFor(model => model.CreatedOn)
 
     <div class="panel panel-primary">
-        <div class="panel-heading">
-            <h4 class="panel-title">Registraion </h4>
+
+        <div class="introtitle">
+            <div class="container txtCenter">
+                <h1>Sign up for a free account</h1>
+                <p>
+                    No risk obligation or credit card required
+                </p>
+            </div>
         </div>
-        <div class="panel-body">
-            <fieldset>
-                @*<legend>Registraion</legend>*@
-                <div class="form-group">
-                    @Html.LabelFor(model => model.SubscriptionName, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(model => model.SubscriptionName, new { @class = "form-control", @placeholder = "Subscription Name" })
-                        @Html.ValidationMessageFor(model => model.SubscriptionName, "", new { @style = "color:red" })
-                    </div>
-                </div>
-                <br /><br />
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Mobile, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(model => model.Mobile, new { @class = "form-control", @placeholder = "Mobile Number" })
-                        @Html.ValidationMessageFor(model => model.Mobile, "", new { @style = "color:red" })
-                    </div>
-                </div>
-                <br /><br />
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Email, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @placeholder = "Email Id" })
-                        @Html.ValidationMessageFor(model => model.Email, "", new { @style = "color:red" })
-                    </div>
-                </div>
+        <div class="row">
 
-                <br /><br />
-                <div class="form-group">
-                    @Html.LabelFor(model => model.ContactPerson, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(model => model.ContactPerson, new { @class = "form-control", @placeholder = "Contact Person" })
-                        @Html.ValidationMessageFor(model => model.ContactPerson, "", new { @style = "color:red" })
-                    </div>
-                </div>
-                <br /><br />
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Address, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.TextAreaFor(model => model.Address, new { @class = "form-control", @placeholder = "Address" })
-                        @Html.ValidationMessageFor(model => model.Address, "", new { @style = "color:red" })
-                    </div>
-                </div>
-                <br /><br /><br /><br />
+            <div class="col-md-9 col-md-offset-3">
+                <div class="panel-body">
+                    <fieldset>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Name, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @placeholder = "Org.Name" })
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @style = "color:red" })
+                            </div>
+                        </div>
+                        <br /><br />
+                              <div class="form-group">
+                                  @*@Html.LabelFor(model => model.Hostnames, new { @class = "col-md-2 control-label" })*@
+                                  <label class="col-md-2 control-label">Subscription </label>
+                                  <div class="col-md-2">
+                                      @*@Html.TextBoxFor(model => model.Hostnames[0], new { @class = "form-control", @placeholder = "Subscription Name" })*@
+                                      <input type="text" class="form-control" name="hostname" required />
+                                      @*@Html.ValidationMessageFor(model => model.Hostnames[0], "", new { @style = "color:red" })*@
+                                  </div>
+                                  <div class="col-md-2">
+                                      .mesure.io
+                                  </div>
+                              </div>
 
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        @*<input type="submit" id="btnSubmint" value="Submit" class="btn btn-primary">*@
-                        <input type="submit" id="btnSubmint" value="@ViewBag.ButtonName" class="btn btn-primary">
-                        <a class="btn btn-danger" href="@Url.Action("Index", "Registration")">Cancel</a>
-                    </div>
-                </div>
+                        <br /><br />
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Mobile, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(model => model.Mobile, new { @class = "form-control", @placeholder = "Mobile Number" })
+                                @Html.ValidationMessageFor(model => model.Mobile, "", new { @style = "color:red" })
+                            </div>
+                        </div>
+                        <br /><br />
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Email, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @placeholder = "Email Id" })
+                                @Html.ValidationMessageFor(model => model.Email, "", new { @style = "color:red" })
+                            </div>
+                        </div>
 
-            </fieldset>
-            @{
-                if (!string.IsNullOrEmpty(ViewBag.duplicateMsg))
-                {
-                    <script>
+                        <br /><br />
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ContactPerson, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(model => model.ContactPerson, new { @class = "form-control", @placeholder = "Contact Person" })
+                                @Html.ValidationMessageFor(model => model.ContactPerson, "", new { @style = "color:red" })
+                            </div>
+                        </div>
+                        <br /><br />
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Address, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-10">
+                                @Html.TextAreaFor(model => model.Address, new { @class = "form-control", @placeholder = "Address" })
+                                @Html.ValidationMessageFor(model => model.Address, "", new { @style = "color:red" })
+                            </div>
+                        </div>
+                        <br /><br /><br /><br />
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                @*<input type="submit" id="btnSubmint" value="Submit" class="btn btn-primary">*@
+                                <input type="submit" id="btnSubmint" value="@ViewBag.ButtonName" class="btn btn-primary">
+                                <a class="btn btn-danger" href="@Url.Action("Index", "Registration")">Cancel</a>
+                            </div>
+                        </div>
+
+                    </fieldset>
+                    @{
+                        if (!string.IsNullOrEmpty(ViewBag.duplicateMsg))
+                        {
+                            <script>
                     swal({
                         title: '@ViewBag.duplicateMsg',
                         text: "",
@@ -89,10 +107,14 @@
                         dangerMode: true,
                         closeOnClickOutside: false,
                     });
-                    </script>
-                };
-            }
+                            </script>
+                        };
+                    }
+                </div>
+
+            </div>
         </div>
+
     </div>
 
 }

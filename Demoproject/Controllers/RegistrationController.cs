@@ -61,9 +61,11 @@ namespace Demoproject.Controllers
         }
 
         [HttpPost]
-        public ActionResult RegistrationForm(Tenant tenant)
+        public ActionResult RegistrationForm(Tenant tenant, FormCollection frm)
         {
             ViewBag.ButtonName = "Submit";
+            var hostname = frm["hostname"]+"."+"mesure.io";
+
             if (ModelState.IsValid)
             {
                 if (tenant.Id > 0)
@@ -94,9 +96,9 @@ namespace Demoproject.Controllers
                     tenant.Id = Convert.ToInt64(DateTime.UtcNow.ToString("yyMMddhhmmss"));
                     tenant.CreatedOn = DateTime.Now.ToShortDateString();
                     tenant.Services = new List<string> { "Admint", "Client" };
-                    tenant.Hostnames = new List<string> { "Localhost:00001" };
-                    tenant.Name = tenant.SubscriptionName;
-                    tenant.Theme = "blue";
+                    tenant.Hostnames = new List<string> { hostname };
+                    tenant.Name = tenant.Name;
+                    tenant.Theme = "Cerulean";
                     tenant.ConnectionString = "Godaddy";
                     using (StreamReader read = new StreamReader(path))
                     {
@@ -104,16 +106,16 @@ namespace Demoproject.Controllers
 
                         var appSettingsRoot = JsonConvert.DeserializeObject<AppSettings>(jsondata);
                         List<Tenant> tenants = appSettingsRoot.Multitenancy.Tenants;
-                        appSettingsRoot.Multitenancy.Tenants.Add(tenant);
 
-                        if (tenants.Select(x => x.SubscriptionName).Distinct().Count() != tenants.Count)
+                        if (tenants.Any(x => x.Hostnames.Contains(hostname))  || tenants.Any(x => x.Email.Contains(tenant.Email)))
                         {
 
-                            ViewBag.duplicateMsg = " Sorry ! this Subscription Name is already taken. please try something different ";
+                            ViewBag.duplicateMsg = " Sorry ! this Subscription Name is already taken or Email is associated. Please try with other Subscription name or Email.";
                             return View();
                         }
                         else
                         {
+                            appSettingsRoot.Multitenancy.Tenants.Add(tenant);
                             jsondata = JsonConvert.SerializeObject(appSettingsRoot, Formatting.Indented);
                             ViewBag.SuccessMsg = " Registration successful...! Please check your email.";
                         }
