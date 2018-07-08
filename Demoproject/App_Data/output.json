@@ -84,6 +84,24 @@
         ],
         "Theme": "Cerulean",
         "ConnectionString": "Godaddy"
+      },
+      {
+        "Id": 180708030909,
+        "Address": "Hyderabad",
+        "Email": "sivaji@gmail.com",
+        "Mobile": "9059688504",
+        "ContactPerson": "Ganesh",
+        "CreatedOn": "7/8/2018",
+        "Services": [
+          "Admint",
+          "Client"
+        ],
+        "Name": "Wipro",
+        "Hostnames": [
+          "wip.mesure.io"
+        ],
+        "Theme": "Cerulean",
+        "ConnectionString": "Godaddy"
       }
     ]
   }

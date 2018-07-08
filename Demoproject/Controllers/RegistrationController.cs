@@ -122,11 +122,11 @@ namespace Demoproject.Controllers
                 else
                 {
                     string hostname = string.Join(",", tenant.Hostnames.ToArray());
-
+                    hostname = hostname + "." + "mesure.io";
                     tenant.Id = Convert.ToInt64(DateTime.UtcNow.ToString("yyMMddhhmmss"));
                     tenant.CreatedOn = DateTime.Now.ToShortDateString();
                     tenant.Services = new List<string> { "Admint", "Client" };
-                    tenant.Hostnames = new List<string> { hostname + "." + "mesure.io" };
+                    tenant.Hostnames = new List<string> { hostname };
                     tenant.Name = tenant.Name;
                     tenant.Theme = "Cerulean";
                     tenant.ConnectionString = "Godaddy";
