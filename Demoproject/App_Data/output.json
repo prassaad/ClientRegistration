@@ -14,30 +14,12 @@
   "Multitenancy": {
     "Tenants": [
       {
-        "Id": 180706063342,
-        "Address": "Hydetabad",
+        "Id": 180707024610,
+        "Address": "Bulkampate, Hyderabad",
         "Email": "prasaddamgeti@gmail.com",
         "Mobile": "8978899993",
-        "ContactPerson": "Vijay",
-        "CreatedOn": "7/6/2018",
-        "Services": [
-          "Admint",
-          "Client"
-        ],
-        "Name": "Account 1",
-        "Hostnames": [
-          "account1.mesure.io"
-        ],
-        "Theme": "Cerulean",
-        "ConnectionString": "Godaddy"
-      },
-      {
-        "Id": 180706063435,
-        "Address": "Hyderabad",
-        "Email": "prasaddamgeti1@gmail.com",
-        "Mobile": "8978899993",
-        "ContactPerson": "Vijay",
-        "CreatedOn": "7/6/2018",
+        "ContactPerson": "vijaya",
+        "CreatedOn": "7/7/2018",
         "Services": [
           "Admint",
           "Client"
@@ -45,6 +27,114 @@
         "Name": "Oxford University",
         "Hostnames": [
           "oxfd.mesure.io"
+        ],
+        "Theme": "Cerulean",
+        "ConnectionString": "Godaddy"
+      },
+      {
+        "Id": 180707024927,
+        "Address": "S R Nagar",
+        "Email": "sivaji.budida@gmail.com",
+        "Mobile": "9030257173",
+        "ContactPerson": "Narendra",
+        "CreatedOn": "7/7/2018",
+        "Services": [
+          "Admint",
+          "Client"
+        ],
+        "Name": "KYC",
+        "Hostnames": [
+          "kyc.mesure.io"
+        ],
+        "Theme": "Cerulean",
+        "ConnectionString": "Godaddy"
+      },
+      {
+        "Id": 180707034858,
+        "Address": "S R Nagar, Hyderabad",
+        "Email": "raju@gmail.com",
+        "Mobile": "8978899993",
+        "ContactPerson": "uma",
+        "CreatedOn": "7/7/2018",
+        "Services": [
+          "Admint",
+          "Client"
+        ],
+        "Name": "Coetl",
+        "Hostnames": [
+          "coetl.mesure.io"
+        ],
+        "Theme": "Cerulean",
+        "ConnectionString": "Godaddy"
+      },
+      {
+        "Id": 180707062145,
+        "Address": "Hyderabad",
+        "Email": "govind@gmail.com",
+        "Mobile": "9876543210",
+        "ContactPerson": "Sandeep",
+        "CreatedOn": "7/7/2018",
+        "Services": [
+          "Admint",
+          "Client"
+        ],
+        "Name": "infosys",
+        "Hostnames": [
+          "info.mesure.io"
+        ],
+        "Theme": "Cerulean",
+        "ConnectionString": "Godaddy"
+      },
+      {
+        "Id": 180708030909,
+        "Address": "Hyderabad",
+        "Email": "sivaji@gmail.com",
+        "Mobile": "9059688504",
+        "ContactPerson": "Ganesh",
+        "CreatedOn": "7/8/2018",
+        "Services": [
+          "Admint",
+          "Client"
+        ],
+        "Name": "Wipro",
+        "Hostnames": [
+          "wip.mesure.io"
+        ],
+        "Theme": "Cerulean",
+        "ConnectionString": "Godaddy"
+      },
+      {
+        "Id": 180709045844,
+        "Address": "Hyderabad",
+        "Email": "narendra@gmail.com",
+        "Mobile": "9030257173",
+        "ContactPerson": "Narendra",
+        "CreatedOn": "7/9/2018",
+        "Services": [
+          "Admint",
+          "Client"
+        ],
+        "Name": "kyber",
+        "Hostnames": [
+          "kybernet.mesure.io"
+        ],
+        "Theme": "Cerulean",
+        "ConnectionString": "Godaddy"
+      },
+      {
+        "Id": 180709065239,
+        "Address": "Hyderabad",
+        "Email": "lastmile@gmail.com",
+        "Mobile": "9030257173",
+        "ContactPerson": "Narendra",
+        "CreatedOn": "7/9/2018",
+        "Services": [
+          "Admint",
+          "Client"
+        ],
+        "Name": "lastmile",
+        "Hostnames": [
+          "lastmile.mesure.io"
         ],
         "Theme": "Cerulean",
         "ConnectionString": "Godaddy"

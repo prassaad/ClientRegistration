@@ -27,6 +27,7 @@ namespace Demoproject.Models
         public string CreatedOn { get; set; }
 
     }
+
     public class DefaultConnection
     {
         public string ConnectionString { get; set; }
@@ -49,17 +50,10 @@ namespace Demoproject.Models
         public LogLevel LogLevel { get; set; }
     }
 
-    public class Tenant
+
+    public class Tenant 
     {
-        //public long Id { get; set; }
-        //public string SubscriptionName { get; set; }
-        //public string Address { get; set; }
-        //public string Email { get; set; }
-        //public string Mobile { get; set; }
-        //public string ContactPerson { get; set; }
-        //public string CreatedOn { get; set; }
-
-
+      
         public Nullable<long> Id { get; set; }
         [Required(ErrorMessage = "Please Enter Address")]
         public string Address { get; set; }
@@ -82,6 +76,7 @@ namespace Demoproject.Models
         public List<string> Hostnames { get; set; }
         public string Theme { get; set; }
         public string ConnectionString { get; set; }
+
     }
 
     public class Multitenancy
