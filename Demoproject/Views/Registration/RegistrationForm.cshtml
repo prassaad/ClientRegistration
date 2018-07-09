@@ -45,7 +45,7 @@
                             <div class="col-md-2">
                                 @if (ViewBag.ButtonName == "Update")
                                 {
-                                    @Html.TextBoxFor(model => model.Hostnames[0], new { disabled = "disabled", @readonly = "readonly", @class = "form-control ", @required = "", @placeholder = "Subscription Name" })
+                                    @Html.TextBoxFor(model => model.Hostnames[0], new { @readonly = "readonly", @class = "form-control ", @required = "", @placeholder = "Subscription Name" })
                                 }
                                 else
                                 {
@@ -71,8 +71,17 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.Email, new { @class = "col-md-2 control-label" })
                             <div class="col-md-10">
-                                @Html.TextBoxFor(model => model.Email, new { @class = "form-control ", @placeholder = "Email Id" })
-                                @Html.ValidationMessageFor(model => model.Email, "", new { @style = "color:red" })
+                                @if (ViewBag.ButtonName == "Update")
+                                {
+                                    @Html.TextBoxFor(model => model.Email, new { @readonly = "readonly", @class = "form-control ", @placeholder = "Email Id" })
+                                }
+                                else
+                                {
+                                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control ", @placeholder = "Email Id" })
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @style = "color:red" })
+                                }
+
+
                             </div>
                         </div>
 

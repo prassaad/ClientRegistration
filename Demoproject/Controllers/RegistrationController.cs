@@ -85,17 +85,17 @@ namespace Demoproject.Controllers
             {
                 if (tenant.Id > 0)
                 {
+                    ViewBag.ButtonName = "Update";
                     using (StreamReader read = new StreamReader(path))
                     {
                         jsondata = read.ReadToEnd();
                         var appSettingsRoot = JsonConvert.DeserializeObject<AppSettings>(jsondata);
                         foreach (var client in appSettingsRoot.Multitenancy.Tenants.Where(x => x.Id == tenant.Id))
                         {
-                            client.Name = tenant.Name;
-                            client.Address = tenant.Address;
-                            client.Email = tenant.Email;
-                            client.Mobile = tenant.Mobile;
-                            client.ContactPerson = tenant.ContactPerson;
+                                client.Name = tenant.Name;
+                                client.Address = tenant.Address;
+                                client.Mobile = tenant.Mobile;
+                                client.ContactPerson = tenant.ContactPerson;
                         }
                         jsondata = JsonConvert.SerializeObject(appSettingsRoot, Formatting.Indented);
 

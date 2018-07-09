@@ -102,6 +102,24 @@
         ],
         "Theme": "Cerulean",
         "ConnectionString": "Godaddy"
+      },
+      {
+        "Id": 180709045844,
+        "Address": "Hyderabad",
+        "Email": "narendra@gmail.com",
+        "Mobile": "9030257173",
+        "ContactPerson": "Narendra",
+        "CreatedOn": "7/9/2018",
+        "Services": [
+          "Admint",
+          "Client"
+        ],
+        "Name": "kyber",
+        "Hostnames": [
+          "kybernet.mesure.io"
+        ],
+        "Theme": "Cerulean",
+        "ConnectionString": "Godaddy"
       }
     ]
   }
