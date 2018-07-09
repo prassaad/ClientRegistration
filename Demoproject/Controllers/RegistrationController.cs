@@ -35,7 +35,7 @@ namespace Demoproject.Controllers
                 {
                     jsondata = read.ReadToEnd();
                     var appSettingsRoot = JsonConvert.DeserializeObject<AppSettings>(jsondata);
-                    foreach (var client in appSettingsRoot.Multitenancy.Tenants.Where(x => x.Id == clientId))
+                   foreach (var client in appSettingsRoot.Multitenancy.Tenants.Where(x => x.Id == clientId))
                     {
                         string hostname = string.Join(",", client.Hostnames.ToArray());
                         hostname = hostname.Replace(".mesure.io", string.Empty);
@@ -76,11 +76,9 @@ namespace Demoproject.Controllers
         }
 
         [HttpPost]
-        public ActionResult RegistrationForm(Tenant tenant, FormCollection frm)
+        public ActionResult RegistrationForm(Tenant tenant)
         {
             ViewBag.ButtonName = "Submit";
-            //var hostname = frm["hostname"] + "." + "mesure.io";
-
             if (ModelState.IsValid)
             {
                 if (tenant.Id > 0)
@@ -122,11 +120,11 @@ namespace Demoproject.Controllers
                 else
                 {
                     string hostname = string.Join(",", tenant.Hostnames.ToArray());
-                    hostname = hostname + "." + "mesure.io";
+                    //hostname = hostname + "." + "mesure.io";
                     tenant.Id = Convert.ToInt64(DateTime.UtcNow.ToString("yyMMddhhmmss"));
                     tenant.CreatedOn = DateTime.Now.ToShortDateString();
                     tenant.Services = new List<string> { "Admint", "Client" };
-                    tenant.Hostnames = new List<string> { hostname };
+                    tenant.Hostnames = new List<string> { hostname + "." + "mesure.io" };
                     tenant.Name = tenant.Name;
                     tenant.Theme = "Cerulean";
                     tenant.ConnectionString = "Godaddy";

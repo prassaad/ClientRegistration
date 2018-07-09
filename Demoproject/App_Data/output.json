@@ -120,6 +120,24 @@
         ],
         "Theme": "Cerulean",
         "ConnectionString": "Godaddy"
+      },
+      {
+        "Id": 180709065239,
+        "Address": "Hyderabad",
+        "Email": "lastmile@gmail.com",
+        "Mobile": "9030257173",
+        "ContactPerson": "Narendra",
+        "CreatedOn": "7/9/2018",
+        "Services": [
+          "Admint",
+          "Client"
+        ],
+        "Name": "lastmile",
+        "Hostnames": [
+          "lastmile.mesure.io"
+        ],
+        "Theme": "Cerulean",
+        "ConnectionString": "Godaddy"
       }
     ]
   }

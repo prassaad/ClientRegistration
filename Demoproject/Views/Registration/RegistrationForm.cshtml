@@ -80,11 +80,8 @@
                                     @Html.TextBoxFor(model => model.Email, new { @class = "form-control ", @placeholder = "Email Id" })
                                     @Html.ValidationMessageFor(model => model.Email, "", new { @style = "color:red" })
                                 }
-
-
                             </div>
                         </div>
-
                         <br /><br />
                         <div class="form-group">
                             @Html.LabelFor(model => model.ContactPerson, new { @class = "col-md-2 control-label" })
@@ -102,7 +99,6 @@
                             </div>
                         </div>
                         <br /><br /><br /><br />
-
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-10">
                                 @*<input type="submit" id="btnSubmint" value="Submit" class="btn btn-primary">*@
@@ -110,7 +106,6 @@
                                 <a class="btn btn-danger" href="@Url.Action("Index", "Registration")">Cancel</a>
                             </div>
                         </div>
-
                     </fieldset>
                     @{
                         if (!string.IsNullOrEmpty(ViewBag.duplicateMsg))

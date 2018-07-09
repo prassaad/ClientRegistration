@@ -27,6 +27,7 @@ namespace Demoproject.Models
         public string CreatedOn { get; set; }
 
     }
+
     public class DefaultConnection
     {
         public string ConnectionString { get; set; }
