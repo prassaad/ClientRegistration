@@ -49,7 +49,12 @@ namespace Demoproject.Controllers
                             Email = client.Email,
                             Mobile = client.Mobile,
                             ContactPerson = client.ContactPerson,
-                            Hostnames = client_hostname
+                            Hostnames = client_hostname,
+                            SubHeadText = client.SubHeadText,
+                            MoreLink = client.MoreLink,
+                            Sec1Text = client.Sec1Text,
+                            Sec2Text= client.Sec2Text,
+                            Sec3Text = client.Sec3Text
                         };
                         return View("RegistrationForm", tenant);
                     }
@@ -90,10 +95,16 @@ namespace Demoproject.Controllers
                         var appSettingsRoot = JsonConvert.DeserializeObject<AppSettings>(jsondata);
                         foreach (var client in appSettingsRoot.Multitenancy.Tenants.Where(x => x.Id == tenant.Id))
                         {
-                                client.Name = tenant.Name;
-                                client.Address = tenant.Address;
-                                client.Mobile = tenant.Mobile;
-                                client.ContactPerson = tenant.ContactPerson;
+                            client.Name = tenant.Name;
+                            client.Address = tenant.Address;
+                            client.Mobile = tenant.Mobile;
+                            client.ContactPerson = tenant.ContactPerson;
+                            client.SubHeadText = tenant.SubHeadText;
+                            client.MoreLink = tenant.MoreLink;
+                            client.Sec1Text = tenant.Sec1Text;
+                            client.Sec2Text = tenant.Sec2Text;
+                            client.Sec3Text = tenant.Sec3Text;
+
                         }
                         jsondata = JsonConvert.SerializeObject(appSettingsRoot, Formatting.Indented);
 
@@ -153,7 +164,7 @@ namespace Demoproject.Controllers
         }
 
         [HttpGet]
-        public JsonResult ReadJsonFile()
+        public JsonResult ReadJsonFile(int? pageIndex)
         {
             using (StreamReader read = new StreamReader(path))
             {

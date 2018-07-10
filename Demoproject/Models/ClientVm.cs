@@ -76,12 +76,22 @@ namespace Demoproject.Models
         public List<string> Hostnames { get; set; }
         public string Theme { get; set; }
         public string ConnectionString { get; set; }
+        public string SubHeadText { get; set; }
+        public string MoreLink { get; set; }
+        public string Sec1Text { get; set; }
+        public string Sec2Text { get; set; }
+        public string Sec3Text { get; set; }
+
 
     }
 
     public class Multitenancy
     {
         public List<Tenant> Tenants { get; set; }
+        public int PageIndex { get; set; }
+        public int PageSize { get; set; }
+        public int RecordCount { get; set; }
+
     }
 
     public class AppSettings

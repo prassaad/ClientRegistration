@@ -29,7 +29,12 @@
           "oxfd.mesure.io"
         ],
         "Theme": "Cerulean",
-        "ConnectionString": "Godaddy"
+        "ConnectionString": "Godaddy",
+        "SubHeadText": null,
+        "MoreLink": null,
+        "Sec1Text": null,
+        "Sec2Text": null,
+        "Sec3Text": null
       },
       {
         "Id": 180707024927,
@@ -47,7 +52,12 @@
           "kyc.mesure.io"
         ],
         "Theme": "Cerulean",
-        "ConnectionString": "Godaddy"
+        "ConnectionString": "Godaddy",
+        "SubHeadText": null,
+        "MoreLink": null,
+        "Sec1Text": null,
+        "Sec2Text": null,
+        "Sec3Text": null
       },
       {
         "Id": 180707034858,
@@ -65,7 +75,12 @@
           "coetl.mesure.io"
         ],
         "Theme": "Cerulean",
-        "ConnectionString": "Godaddy"
+        "ConnectionString": "Godaddy",
+        "SubHeadText": null,
+        "MoreLink": null,
+        "Sec1Text": null,
+        "Sec2Text": null,
+        "Sec3Text": null
       },
       {
         "Id": 180707062145,
@@ -83,7 +98,12 @@
           "info.mesure.io"
         ],
         "Theme": "Cerulean",
-        "ConnectionString": "Godaddy"
+        "ConnectionString": "Godaddy",
+        "SubHeadText": null,
+        "MoreLink": null,
+        "Sec1Text": null,
+        "Sec2Text": null,
+        "Sec3Text": null
       },
       {
         "Id": 180708030909,
@@ -101,7 +121,12 @@
           "wip.mesure.io"
         ],
         "Theme": "Cerulean",
-        "ConnectionString": "Godaddy"
+        "ConnectionString": "Godaddy",
+        "SubHeadText": null,
+        "MoreLink": null,
+        "Sec1Text": null,
+        "Sec2Text": null,
+        "Sec3Text": null
       },
       {
         "Id": 180709045844,
@@ -119,7 +144,12 @@
           "kybernet.mesure.io"
         ],
         "Theme": "Cerulean",
-        "ConnectionString": "Godaddy"
+        "ConnectionString": "Godaddy",
+        "SubHeadText": null,
+        "MoreLink": null,
+        "Sec1Text": null,
+        "Sec2Text": null,
+        "Sec3Text": null
       },
       {
         "Id": 180709065239,
@@ -137,8 +167,16 @@
           "lastmile.mesure.io"
         ],
         "Theme": "Cerulean",
-        "ConnectionString": "Godaddy"
+        "ConnectionString": "Godaddy",
+        "SubHeadText": "abcd",
+        "MoreLink": "12345",
+        "Sec1Text": "abcd",
+        "Sec2Text": "abcd",
+        "Sec3Text": "12345"
       }
-    ]
+    ],
+    "PageIndex": 0,
+    "PageSize": 0,
+    "RecordCount": 0
   }
 }

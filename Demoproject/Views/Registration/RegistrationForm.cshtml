@@ -1,6 +1,4 @@
 ﻿@model Demoproject.Models.Tenant
-
-
 @{
     ViewBag.Title = "Registration Form";
 }
@@ -12,12 +10,9 @@
 @using (Html.BeginForm("RegistrationForm", "Registration"))
 {
     @Html.ValidationSummary(true)
-
     @Html.HiddenFor(model => model.Id)
     @Html.HiddenFor(model => model.CreatedOn)
-
     <div class="panel panel-success">
-
         <div class="introtitle">
             <div class="container txtCenter">
                 <h1>Sign up for a free account</h1>
@@ -27,90 +22,90 @@
             </div>
         </div>
         <div class="row">
-
-            <div class="col-md-9 col-md-offset-3">
-                <div class="panel-body">
-                    <fieldset>
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Name, new { @class = "col-md-2 control-label" })
-                            <div class="col-md-10">
-                                @Html.TextBoxFor(model => model.Name, new { @class = "form-control",  @placeholder = "Org.Name" })
-                                @Html.ValidationMessageFor(model => model.Name, "", new { @style = "color:red" })
+            <div class="col-md-12">
+                
+                <div class="col-md-6">
+                    <div class="panel-body">
+                        <fieldset>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Name, new { @class = "col-md-3 control-label" })
+                                <div class="col-md-9">
+                                    @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @placeholder = "Org.Name" })
+                                    @Html.ValidationMessageFor(model => model.Name, "", new { @style = "color:red" })
+                                </div>
                             </div>
-                        </div>
-                        <br /><br />
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Hostnames, new { @class = "col-md-2 control-label" })
-                            @*<label class="col-md-2 control-label">Subscription </label>*@
-                            <div class="col-md-2">
-                                @if (ViewBag.ButtonName == "Update")
-                                {
-                                    @Html.TextBoxFor(model => model.Hostnames[0], new { @readonly = "readonly", @class = "form-control ", @required = "", @placeholder = "Subscription Name" })
-                                }
-                                else
-                                {
-                                    @Html.TextBoxFor(model => model.Hostnames[0], new { @class = "form-control ", @required = "", @placeholder = "Subscription Name" })
-                                }
-                                @*<input type="text" class="form-control" name="hostname" required /> @required = "",*@
-                                @*@Html.ValidationMessageFor(model => model.Hostnames[0], "", new { @style = "color:red" })*@
+                            <br /><br />
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Hostnames, new { @class = "col-md-3 control-label" })
+                                @*<label class="col-md-2 control-label">Subscription </label>*@
+                                <div class="col-md-5">
+                                    @if (ViewBag.ButtonName == "Update")
+                                    {
+                                        @Html.TextBoxFor(model => model.Hostnames[0], new { @readonly = "readonly", @class = "form-control ", @required = "", @placeholder = "Subscription Name" })
+                                    }
+                                    else
+                                    {
+                                        @Html.TextBoxFor(model => model.Hostnames[0], new { @class = "form-control ", @required = "", @placeholder = "Subscription Name" })
+                                    }
+                                    @*<input type="text" class="form-control" name="hostname" required /> @required = "",*@
+                                    @*@Html.ValidationMessageFor(model => model.Hostnames[0], "", new { @style = "color:red" })*@
+                                </div>
+                                <div class="col-md-2">
+                                    .mesure.io
+                                </div>
                             </div>
-                            <div class="col-md-2">
-                                .mesure.io
+                            <br /><br />
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Mobile, new { @class = "col-md-3 control-label" })
+                                <div class="col-md-9">
+                                    @Html.TextBoxFor(model => model.Mobile, new { @class = "form-control ", @placeholder = "Mobile Number" })
+                                    @Html.ValidationMessageFor(model => model.Mobile, "", new { @style = "color:red" })
+                                </div>
                             </div>
-                        </div>
-
-                        <br /><br />
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Mobile, new { @class = "col-md-2 control-label" })
-                            <div class="col-md-10">
-                                @Html.TextBoxFor(model => model.Mobile, new { @class = "form-control ", @placeholder = "Mobile Number" })
-                                @Html.ValidationMessageFor(model => model.Mobile, "", new { @style = "color:red" })
+                            <br /><br />
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Email, new { @class = "col-md-3 control-label" })
+                                <div class="col-md-9">
+                                    @if (ViewBag.ButtonName == "Update")
+                                    {
+                                        @Html.TextBoxFor(model => model.Email, new { @readonly = "readonly", @class = "form-control ", @placeholder = "Email Id" })
+                                    }
+                                    else
+                                    {
+                                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control ", @placeholder = "Email Id" })
+                                        @Html.ValidationMessageFor(model => model.Email, "", new { @style = "color:red" })
+                                    }
+                                </div>
                             </div>
-                        </div>
-                        <br /><br />
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Email, new { @class = "col-md-2 control-label" })
-                            <div class="col-md-10">
-                                @if (ViewBag.ButtonName == "Update")
-                                {
-                                    @Html.TextBoxFor(model => model.Email, new { @readonly = "readonly", @class = "form-control ", @placeholder = "Email Id" })
-                                }
-                                else
-                                {
-                                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control ", @placeholder = "Email Id" })
-                                    @Html.ValidationMessageFor(model => model.Email, "", new { @style = "color:red" })
-                                }
+                            <br /><br />
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.ContactPerson, new { @class = "col-md-3 control-label" })
+                                <div class="col-md-9">
+                                    @Html.TextBoxFor(model => model.ContactPerson, new { @class = "form-control", @placeholder = "Contact Person" })
+                                    @Html.ValidationMessageFor(model => model.ContactPerson, "", new { @style = "color:red" })
+                                </div>
                             </div>
-                        </div>
-                        <br /><br />
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.ContactPerson, new { @class = "col-md-2 control-label" })
-                            <div class="col-md-10">
-                                @Html.TextBoxFor(model => model.ContactPerson, new { @class = "form-control", @placeholder = "Contact Person" })
-                                @Html.ValidationMessageFor(model => model.ContactPerson, "", new { @style = "color:red" })
+                            <br /><br />
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Address, new { @class = "col-md-3 control-label" })
+                                <div class="col-md-9">
+                                    @Html.TextAreaFor(model => model.Address, new { @class = "form-control", @placeholder = "Address" })
+                                    @Html.ValidationMessageFor(model => model.Address, "", new { @style = "color:red" })
+                                </div>
                             </div>
-                        </div>
-                        <br /><br />
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Address, new { @class = "col-md-2 control-label" })
-                            <div class="col-md-10">
-                                @Html.TextAreaFor(model => model.Address, new { @class = "form-control", @placeholder = "Address" })
-                                @Html.ValidationMessageFor(model => model.Address, "", new { @style = "color:red" })
+                            <br /><br /><br /><br />
+                            <div class="form-group">
+                                <div class="col-md-offset-3 col-md-9">
+                                    @*<input type="submit" id="btnSubmint" value="Submit" class="btn btn-primary">*@
+                                    <input type="submit" id="btnSubmint" value="@ViewBag.ButtonName" class="btn btn-primary">
+                                    <a class="btn btn-danger" href="@Url.Action("Index", "Registration")">Cancel</a>
+                                </div>
                             </div>
-                        </div>
-                        <br /><br /><br /><br />
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                @*<input type="submit" id="btnSubmint" value="Submit" class="btn btn-primary">*@
-                                <input type="submit" id="btnSubmint" value="@ViewBag.ButtonName" class="btn btn-primary">
-                                <a class="btn btn-danger" href="@Url.Action("Index", "Registration")">Cancel</a>
-                            </div>
-                        </div>
-                    </fieldset>
-                    @{
-                        if (!string.IsNullOrEmpty(ViewBag.duplicateMsg))
-                        {
-                            <script>
+                        </fieldset>
+                        @{
+                            if (!string.IsNullOrEmpty(ViewBag.duplicateMsg))
+                            {
+                                <script>
                              swal({
                                  title: '@ViewBag.duplicateMsg',
                                  text: "",
@@ -118,68 +113,81 @@
                                  dangerMode: true,
                                  closeOnClickOutside: false,
                              });
-                            </script>
-                        };
-                    }
+                                </script>
+                            };
+                        }
+                    </div>
                 </div>
+                <div class="col-md-6">
 
+                    @{
+                        if (ViewBag.ButtonName == "Update")
+                        {
+                           
+                                Html.RenderPartial("_NextRegistrationForm");
+                           
+                        }
+                    }
+
+                </div>
             </div>
+
         </div>
-
     </div>
-
 }
 
 <script>
-    // // start validations
 
-    //$("body").on('blur', '.required', function () {
-    //    if (!$.trim($(this).val())) {
-    //        $(this).css("border-color", "red");
-    //    }
-    //});
-    //$("body").on('focus', '.required', function () {
-    //    $(this).css("border-color", "")
-    //});
-    //$("body").on('blur', '.email', function () {
-    //    var regex = new RegExp("^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
-    //    if (!regex.test($(this).val())) {
-    //        $(this).css("border-color", "red");
-    //        alert("Please check the Email Id")
-    //    }
-    //});
-    //$("body").on('keydown', '.phone', function (e) {
-    //    if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
-    //        (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) ||
-    //        (e.keyCode >= 35 && e.keyCode <= 40)) {
-    //        return;
-    //    }
-    //    // Ensure that it is a number and stop the keypress
-    //    if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
-    //        e.preventDefault();
-    //    }
-    //});
-    //$("body").on("click", ".btn", function () {
-    //    var isAllOk = true;
-    //    $("body").find(".required").each(function () {
-    //        if (!$.trim($(this).val())) {
-    //            $(this).css("border-color", "red");
-    //            isAllOk = false;
-    //        }
-    //    });
-    //    if (!isAllOk) {
-    //        //alert("Please Enter the All Fields");
-    //        swal({
-    //            text: "Please Enter the All Fields",
-    //            dangerMode: true,
-    //            closeOnClickOutside: false,
-    //        });
-    //    }
-    //    return isAllOk;
+  
+        // // start validations
 
-    //  });
+        //$("body").on('blur', '.required', function () {
+        //    if (!$.trim($(this).val())) {
+        //        $(this).css("border-color", "red");
+        //    }
+        //});
+        //$("body").on('focus', '.required', function () {
+        //    $(this).css("border-color", "")
+        //});
+        //$("body").on('blur', '.email', function () {
+        //    var regex = new RegExp("^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+        //    if (!regex.test($(this).val())) {
+        //        $(this).css("border-color", "red");
+        //        alert("Please check the Email Id")
+        //    }
+        //});
+        //$("body").on('keydown', '.phone', function (e) {
+        //    if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+        //        (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) ||
+        //        (e.keyCode >= 35 && e.keyCode <= 40)) {
+        //        return;
+        //    }
+        //    // Ensure that it is a number and stop the keypress
+        //    if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+        //        e.preventDefault();
+        //    }
+        //});
+        //$("body").on("click", ".btn", function () {
+        //    var isAllOk = true;
+        //    $("body").find(".required").each(function () {
+        //        if (!$.trim($(this).val())) {
+        //            $(this).css("border-color", "red");
+        //            isAllOk = false;
+        //        }
+        //    });
+        //    if (!isAllOk) {
+        //        //alert("Please Enter the All Fields");
+        //        swal({
+        //            text: "Please Enter the All Fields",
+        //            dangerMode: true,
+        //            closeOnClickOutside: false,
+        //        });
+        //    }
+        //    return isAllOk;
 
-    // End Validations
+        //  });
+
+        // End Validations
 </script>
 
 

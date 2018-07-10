@@ -3,6 +3,8 @@
 }
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+
 <br />
 @{
     if (!string.IsNullOrEmpty(ViewBag.SuccessMsg))
@@ -25,7 +27,6 @@
     </div>
     <br />
     <table class="display table table-bordered" id="tbl">
-
         <tr class="bg-primary">
             <th>Id</th>
             <th>Org.Name</th>
@@ -54,90 +55,90 @@
 </body>
 
 <script>
-            $(document).ready(function () {
-                loaddata();
-            });
-            function loaddata() {
-                $.ajax({
-                    url: '@Url.Action("ReadJsonFile", "Registration")',
-                    dataType: "json",
-                    success: OnSuccess,
-                    failure: function (result) {
-                        alert(result)
-                    },
-                    error: function (result) {
-                        alert(result)
-                    }
-                });
-                function OnSuccess(result) {
-                    var row = $("#tbl tr:last-child").removeAttr("style").clone(true);
-                    $("#tbl tr").not($("#tbl tr:first-child")).remove();
-                    var pop = $.parseJSON(result)
-                    $.each(pop, function (i, val) {
-                        $("td", row).eq(0).html(pop[i].Id);
-                        $("td", row).eq(1).html(pop[i].Name);
-                        $("td", row).eq(2).html("<ul><li>" + pop[i].Hostnames.join("</li><li>") + "</li></ul>");
-                        $("td", row).eq(3).html("<ul><li>" + pop[i].Services.join("</li><li>") + "</li></ul>");
-                        $("td", row).eq(4).html(pop[i].Email);
-                        $("td", row).eq(5).html(pop[i].Mobile);
-                        $("td", row).eq(6).html(pop[i].ContactPerson);
-                        $("td", row).eq(7).html(pop[i].Address);
-                        $("td", row).eq(8).html(pop[i].CreatedOn);
-                        $("td", row).eq(9).html("<a href='#' onclick='editClient(" + pop[i].Id + ");'>Edit</a> &nbsp; <a href='#' onclick='deleteClient(" + pop[i].Id + ");'>Delete</a> ");
-                        $("#tbl").append(row);
-                        row = $("#tbl tr:last-child").clone(true);
+$(document).ready(function () {
+    loaddata();
+ });
+function loaddata() {
+    $.ajax({
+        url: '@Url.Action("ReadJsonFile", "Registration")',
+        dataType: "json",
+        type: "GET",
+        success: OnSuccess,
+        failure: function (result) {
+            alert(result)
+        },
+        error: function (result) {
+            alert(result)
+        }
+    });
+    function OnSuccess(result) {
+        var row = $("#tbl tr:last-child").removeAttr("style").clone(true);
+        $("#tbl tr").not($("#tbl tr:first-child")).remove();
+        var pop = $.parseJSON(result)
+        pop.sort(function (a, b) { return parseFloat(b.CreatedOn) + parseFloat(a.CreatedOn) }); //orderby line
+        $.each(pop, function (i, val) {
+            $("td", row).eq(0).html(pop[i].Id);
+            $("td", row).eq(1).html(pop[i].Name);
+            $("td", row).eq(2).html("<ul><li>" + pop[i].Hostnames.join("</li><li>") + "</li></ul>");
+            $("td", row).eq(3).html("<ul><li>" + pop[i].Services.join("</li><li>") + "</li></ul>");
+            $("td", row).eq(4).html(pop[i].Email);
+            $("td", row).eq(5).html(pop[i].Mobile);
+            $("td", row).eq(6).html(pop[i].ContactPerson);
+            $("td", row).eq(7).html(pop[i].Address);
+            $("td", row).eq(8).html(pop[i].CreatedOn);
+            $("td", row).eq(9).html("<a href='#' onclick='editClient(" + pop[i].Id + ");'>Edit</a> &nbsp; <a href='#' onclick='deleteClient(" + pop[i].Id + ");'>Delete</a> ");
+            $("#tbl").append(row);
+            row = $("#tbl tr:last-child").clone(true);
+        });
+    }
+}
+function createAccount() {
+    var url = '@Url.Action("RegistrationForm", "Registration")';
+    window.location.href = url;
+}
+function editClient(id) {
+    var url = '@Url.Action("RegistrationForm", "Registration")' + '?clientId=' + id;
+    window.location.href = url;
+}
+function deleteClient(id) {
+    swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover this file!",
+        icon: "warning",
+        buttons: ["Cancel","Yes, delete it!"],
+        dangerMode: true,
+        closeOnClickOutside: false,
+
+    })
+    .then((willDelete) => {
+        if (willDelete) {
+            $.ajax({
+               url: '@Url.Action("DeleteRecord", "Registration")',
+               dataType: "json",
+               data: "clientId=" + id,
+               success: function (result) {
+                 swal(result.message, {
+                    icon: "success",
+                    closeOnClickOutside: false,
+                  });
+                    loaddata();
+                },
+                failure: function (result) {
+                    swal(result.message, {
+                        icon: "error",
+                    });
+                },
+                error: function (result) {
+                    swal(result.message, {
+                        icon: "error",
                     });
                 }
+            });
+            } else {
+            //swal("Your file is safe!",{
+            //    icon: "success",
+            //});
             }
-            function createAccount() {
-                var url = '@Url.Action("RegistrationForm", "Registration")';
-                window.location.href = url;
-            }
-            function editClient(id) {
-                var url = '@Url.Action("RegistrationForm", "Registration")' + '?clientId=' + id;
-                window.location.href = url;
-            }
-            function deleteClient(id) {
-                swal({
-                    title: "Are you sure?",
-                    text: "Once deleted, you will not be able to recover this file!",
-                    icon: "warning",
-                    buttons: ["Cancel","Yes, delete it!"],
-                    dangerMode: true,
-                    closeOnClickOutside: false,
-
-                })
-                    .then((willDelete) => {
-                        if (willDelete) {
-                            $(".msg").hide();
-                            $.ajax({
-                                url: '@Url.Action("DeleteRecord", "Registration")',
-                                dataType: "json",
-                                data: "clientId=" + id,
-                                success: function (result) {
-                                    swal(result.message, {
-                                        icon: "success",
-                                        closeOnClickOutside: false,
-                                    });
-
-                                    loaddata();
-                                },
-                                failure: function (result) {
-                                    swal(result.message, {
-                                        icon: "error",
-                                    });
-                                },
-                                error: function (result) {
-                                    swal(result.message, {
-                                        icon: "error",
-                                    });
-                                }
-                            });
-                        } else {
-                            //swal("Your file is safe!",{
-                            //    icon: "success",
-                            //});
-                        }
-                    });
-            }
+        });
+}
 </script>
