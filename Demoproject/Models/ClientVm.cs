@@ -49,7 +49,12 @@ namespace Demoproject.Models
         public bool IncludeScopes { get; set; }
         public LogLevel LogLevel { get; set; }
     }
-
+    public class Service
+    {
+        public object Id { get; set; }
+        public string Name { get; set; }
+        public bool IsChecked { get; set; }
+    }
 
     public class Tenant 
     {
@@ -68,7 +73,7 @@ namespace Demoproject.Models
         [Display(Name = "Contact Person")]
         public string ContactPerson { get; set; }
         public string CreatedOn { get; set; }
-        public List<string> Services { get; set; }
+        public List<Service> Services { get; set; }
         [Display(Name = "Org.Name")]
         [Required(ErrorMessage = "Please Enter Org.Name")]
         public string Name { get; set; }
@@ -82,16 +87,11 @@ namespace Demoproject.Models
         public string Sec2Text { get; set; }
         public string Sec3Text { get; set; }
 
-
     }
 
     public class Multitenancy
     {
         public List<Tenant> Tenants { get; set; }
-        public int PageIndex { get; set; }
-        public int PageSize { get; set; }
-        public int RecordCount { get; set; }
-
     }
 
     public class AppSettings
@@ -100,4 +100,5 @@ namespace Demoproject.Models
         public Logging Logging { get; set; }
         public Multitenancy Multitenancy { get; set; }
     }
+
 }

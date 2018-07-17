@@ -106,13 +106,13 @@
                             if (!string.IsNullOrEmpty(ViewBag.duplicateMsg))
                             {
                                 <script>
-                             swal({
-                                 title: '@ViewBag.duplicateMsg',
-                                 text: "",
-                                 icon: "error",
-                                 dangerMode: true,
-                                 closeOnClickOutside: false,
-                             });
+                                swal({
+                                    title: '@ViewBag.duplicateMsg',
+                                    text: "",
+                                    icon: "error",
+                                    dangerMode: true,
+                                    closeOnClickOutside: false,
+                                });
                                 </script>
                             };
                         }
@@ -123,9 +123,9 @@
                     @{
                         if (ViewBag.ButtonName == "Update")
                         {
-                           
-                                Html.RenderPartial("_NextRegistrationForm");
-                           
+
+                            Html.RenderPartial("_NextRegistrationForm");
+
                         }
                     }
 

@@ -275,6 +275,7 @@
     <Content Include="Views\Registration\Index.cshtml" />
     <Content Include="Views\Registration\RegistrationForm.cshtml" />
     <Content Include="Views\Registration\_NextRegistrationForm.cshtml" />
+    <Content Include="Views\Registration\_Services.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

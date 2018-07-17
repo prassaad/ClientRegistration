@@ -53,7 +53,7 @@ namespace Demoproject.Controllers
                             SubHeadText = client.SubHeadText,
                             MoreLink = client.MoreLink,
                             Sec1Text = client.Sec1Text,
-                            Sec2Text= client.Sec2Text,
+                            Sec2Text = client.Sec2Text,
                             Sec3Text = client.Sec3Text
                         };
                         return View("RegistrationForm", tenant);
@@ -130,11 +130,18 @@ namespace Demoproject.Controllers
                 }
                 else
                 {
+                    //string Name = "Name";
+                    //bool IsChecked = true;
                     string hostname = string.Join(",", tenant.Hostnames.ToArray());
                     //hostname = hostname + "." + "mesure.io";
                     tenant.Id = Convert.ToInt64(DateTime.UtcNow.ToString("yyMMddhhmmss"));
                     tenant.CreatedOn = DateTime.Now.ToShortDateString();
-                    tenant.Services = new List<string> { "Admint", "Client" };
+                    //tenant.Services = new List<string> { "Admin", "Client" };
+                    tenant.Services = new List<Service>
+                    {
+                        new Service{Id=tenant.Id, Name = "Admin", IsChecked = true },
+                        new Service{Id =tenant.Id,Name = "Client", IsChecked = true}
+                    };
                     tenant.Hostnames = new List<string> { hostname + "." + "mesure.io" };
                     tenant.Name = tenant.Name;
                     tenant.Theme = "Cerulean";
@@ -164,7 +171,7 @@ namespace Demoproject.Controllers
         }
 
         [HttpGet]
-        public JsonResult ReadJsonFile(int? pageIndex)
+        public JsonResult ReadJsonFile()
         {
             using (StreamReader read = new StreamReader(path))
             {
@@ -204,6 +211,37 @@ namespace Demoproject.Controllers
             {
                 return Json(new { success = false, message = " Delete Failed" }, JsonRequestBehavior.AllowGet);
             }
+        }
+
+        [HttpGet]
+        public ActionResult _Services(long? clientId)
+        {
+
+           
+            using (StreamReader read = new StreamReader(path))
+            {
+                jsondata = read.ReadToEnd();
+                var appSettingsRoot = JsonConvert.DeserializeObject<AppSettings>(jsondata);
+                foreach (var client in appSettingsRoot.Multitenancy.Tenants.Where(x => x.Id == clientId))
+                {
+                    Tenant tenant = new Tenant
+                    {
+                        Id = client.Id,
+                        Services = client.Services,
+                        //Services = new List<Service>
+                        //{
+                        //new Service{ Name = "SMS", IsChecked = false },
+                        //new Service{Name = "Enrollment", IsChecked = false},
+                        //new Service{Name = "Curriculum", IsChecked = false}
+                        //}
+                    };
+                   
+                    return View("_Services", tenant);
+
+                }
+
+            }
+            return View();
         }
 
     }

@@ -6,6 +6,8 @@
 <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
 
 <br />
+
+
 @{
     if (!string.IsNullOrEmpty(ViewBag.SuccessMsg))
     {
@@ -75,18 +77,24 @@ function loaddata() {
         var row = $("#tbl tr:last-child").removeAttr("style").clone(true);
         $("#tbl tr").not($("#tbl tr:first-child")).remove();
         var pop = $.parseJSON(result)
-        pop.sort(function (a, b) { return parseFloat(b.CreatedOn) + parseFloat(a.CreatedOn) }); //orderby line
+        pop.sort(function (a, b) { return parseFloat(b.CreatedOn) + parseFloat(a.CreatedOn) }); //Data orderby DateTime 
         $.each(pop, function (i, val) {
+
+            var ServicesList = pop[i].Services;
+            var response = "";
+            $.each(ServicesList, function (k, val) { response += "<li>" + ServicesList[k].Name + "</li>" })
+
+
             $("td", row).eq(0).html(pop[i].Id);
             $("td", row).eq(1).html(pop[i].Name);
             $("td", row).eq(2).html("<ul><li>" + pop[i].Hostnames.join("</li><li>") + "</li></ul>");
-            $("td", row).eq(3).html("<ul><li>" + pop[i].Services.join("</li><li>") + "</li></ul>");
+            $("td", row).eq(3).html('<ul>' + response + '</ul>');
             $("td", row).eq(4).html(pop[i].Email);
             $("td", row).eq(5).html(pop[i].Mobile);
             $("td", row).eq(6).html(pop[i].ContactPerson);
             $("td", row).eq(7).html(pop[i].Address);
             $("td", row).eq(8).html(pop[i].CreatedOn);
-            $("td", row).eq(9).html("<a href='#' onclick='editClient(" + pop[i].Id + ");'>Edit</a> &nbsp; <a href='#' onclick='deleteClient(" + pop[i].Id + ");'>Delete</a> ");
+            $("td", row).eq(9).html("<a href='#' onclick='editClient(" + pop[i].Id + ");'>Edit</a> &nbsp; <a href='#' onclick='deleteClient(" + pop[i].Id + ");'>Delete</a>&nbsp; <a href='#' onclick='editServices(" + pop[i].Id + ");'>Edit Services</a> ");
             $("#tbl").append(row);
             row = $("#tbl tr:last-child").clone(true);
         });
@@ -99,6 +107,9 @@ function createAccount() {
 function editClient(id) {
     var url = '@Url.Action("RegistrationForm", "Registration")' + '?clientId=' + id;
     window.location.href = url;
+    }
+function editServices(id) {
+    window.location.href = "Registration/_Services" + '?clientId=' + id;
 }
 function deleteClient(id) {
     swal({
@@ -134,11 +145,12 @@ function deleteClient(id) {
                     });
                 }
             });
-            } else {
-            //swal("Your file is safe!",{
-            //    icon: "success",
-            //});
-            }
+        }
+        //else {
+        //    swal("Your file is safe!",{
+        //        icon: "success",
+        //    });
+        //    }
         });
 }
 </script>

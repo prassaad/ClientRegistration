@@ -21,8 +21,16 @@
         "ContactPerson": "vijaya",
         "CreatedOn": "7/7/2018",
         "Services": [
-          "Admint",
-          "Client"
+          {
+            "Id": 180707024610,
+            "Name": "Admin",
+            "IsChecked": true
+          },
+          {
+            "Id": 180707024610,
+            "Name": "Client",
+            "IsChecked": true
+          }
         ],
         "Name": "Oxford University",
         "Hostnames": [
@@ -44,8 +52,16 @@
         "ContactPerson": "Narendra",
         "CreatedOn": "7/7/2018",
         "Services": [
-          "Admint",
-          "Client"
+          {
+            "Id": 180707024927,
+            "Name": "Admin",
+            "IsChecked": true
+          },
+          {
+            "Id": 180707024927,
+            "Name": "Client",
+            "IsChecked": true
+          }
         ],
         "Name": "KYC",
         "Hostnames": [
@@ -67,8 +83,16 @@
         "ContactPerson": "uma",
         "CreatedOn": "7/7/2018",
         "Services": [
-          "Admint",
-          "Client"
+          {
+            "Id": 180707034858,
+            "Name": "Admin",
+            "IsChecked": true
+          },
+          {
+            "Id": 180707034858,
+            "Name": "Client",
+            "IsChecked": true
+          }
         ],
         "Name": "Coetl",
         "Hostnames": [
@@ -90,8 +114,16 @@
         "ContactPerson": "Sandeep",
         "CreatedOn": "7/7/2018",
         "Services": [
-          "Admint",
-          "Client"
+          {
+            "Id": 180707062145,
+            "Name": "Admin",
+            "IsChecked": true
+          },
+          {
+            "Id": 180707062145,
+            "Name": "Client",
+            "IsChecked": true
+          }
         ],
         "Name": "infosys",
         "Hostnames": [
@@ -113,8 +145,16 @@
         "ContactPerson": "Ganesh",
         "CreatedOn": "7/8/2018",
         "Services": [
-          "Admint",
-          "Client"
+          {
+            "Id": 180708030909,
+            "Name": "Admin",
+            "IsChecked": true
+          },
+          {
+            "Id": 180708030909,
+            "Name": "Client",
+            "IsChecked": true
+          }
         ],
         "Name": "Wipro",
         "Hostnames": [
@@ -136,8 +176,16 @@
         "ContactPerson": "Narendra",
         "CreatedOn": "7/9/2018",
         "Services": [
-          "Admint",
-          "Client"
+          {
+            "Id": 180709045844,
+            "Name": "Admin",
+            "IsChecked": true
+          },
+          {
+            "Id": 180709045844,
+            "Name": "Client",
+            "IsChecked": true
+          }
         ],
         "Name": "kyber",
         "Hostnames": [
@@ -159,8 +207,16 @@
         "ContactPerson": "Narendra",
         "CreatedOn": "7/9/2018",
         "Services": [
-          "Admint",
-          "Client"
+          {
+            "Id": 180709065239,
+            "Name": "Admin",
+            "IsChecked": true
+          },
+          {
+            "Id": 180709065239,
+            "Name": "Client",
+            "IsChecked": true
+          }
         ],
         "Name": "lastmile",
         "Hostnames": [
@@ -174,9 +230,6 @@
         "Sec2Text": "abcd",
         "Sec3Text": "12345"
       }
-    ],
-    "PageIndex": 0,
-    "PageSize": 0,
-    "RecordCount": 0
+    ]
   }
 }
